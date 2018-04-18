@@ -102,6 +102,7 @@ cc_library(
     srcs = [
         "activations.cc",
         "add.cc",
+        "sin.cc",
         "basic_rnn.cc",
         "batch_to_space_nd.cc",
         "bidirectional_sequence_lstm.cc",

@@ -21,6 +21,7 @@ limitations under the License.
 #include "tensorflow/contrib/lite/kernels/internal/tensor.h"
 #include "tensorflow/contrib/lite/kernels/kernel_util.h"
 #include "tensorflow/contrib/lite/kernels/op_macros.h"
+#include <cmath>
 
 namespace tflite {
 namespace ops {
@@ -87,13 +88,17 @@ using namespace tflite;
   }
 
   for (size_t i=0; i<count; ++i) {
-    output_data[i] = sin(input_data[i]);
+    output_data[i] = std::sin(input_data[i]);
   }
   return kTfLiteOk;
 }
 
-}  // namespace add
+TfLiteRegistration* Register_SIN() {
+  static TfLiteRegistration r = {nullptr, nullptr, sin::Prepare, sin::Eval};
+  return &r;
+}
 
+}  // namespace add
 
 }  // namespace builtin
 }  // namespace ops
